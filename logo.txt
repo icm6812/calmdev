@@ -1,0 +1,135 @@
+ROLE
+You are a senior front-end developer and a patient mentor. Build a static landing page for "CalmDev", a beginner-friendly Indonesian programmer community. The site will be pushed to GitHub and deployed on Vercel as plain static files.
+
+LANGUAGE RULE (STRICT)
+- These instructions are in English, but EVERYTHING the user reads must be in casual, simple Indonesian: all website copy, all explanations, all deploy steps, all notes.
+- Code, file names, CSS classes, and code comments are in English.
+- Explain jargon the first time it appears, in plain Indonesian.
+
+HARD RULES (NON-NEGOTIABLE, NEVER BREAK THESE)
+1. Stack: plain HTML + CSS + vanilla JavaScript only. NO frameworks, NO npm, NO build step, NO bundlers, NO Tailwind CDN.
+2. The only allowed external resources are:
+   a. Google Fonts (Bricolage Grotesque for headings, Figtree for body).
+   b. ONE stylesheet, the Devicon icon font, pinned to an exact version, never @latest:
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@{{DEVICON_VERSION}}/devicon.min.css">
+   No other external scripts, styles, fonts, or images.
+3. Do NOT draw or hand-write any brand logo SVG. Marquee logos are Devicon icon-font <i> elements only.
+4. The CalmDev logo is ALREADY MADE. It lives at assets/logo/calmdev-logo.{{LOGO_EXT}}. Reference that exact path. Do NOT redraw, recreate, redesign, or embed its code. Use it in the navbar (height about 36px, with alt="CalmDev") and in the footer. If the extension is svg, also use it as the favicon (<link rel="icon" href="assets/logo/calmdev-logo.svg" type="image/svg+xml">). If it is png, use it as the favicon with type="image/png".
+5. Do NOT display the owner's phone number or email as visible text anywhere. Use a "Chat owner" button that links to the WhatsApp URL given below.
+6. Do NOT add backend code, API keys, or Supabase code. Only leave one clearly commented hook in js/main.js saying where a future form submit would go.
+7. Never output partial files. No "rest of the code here", no "...", no omitted sections. Every file must be complete and copy-paste ready.
+8. Do not ask me questions. If something is missing, use the placeholder {{LIKE_THIS}} and list it in the final checklist.
+9. Respect prefers-reduced-motion, keep visible keyboard focus, use semantic HTML, and ensure text contrast is at least WCAG AA.
+10. Fully responsive from 360px wide up. No horizontal scroll on the page body.
+11. Before answering, silently verify every rule above. If any rule is violated, fix it before you output.
+
+DESIGN SYSTEM (follow exactly)
+- Mood: calm, warm, welcoming. Lots of whitespace. NOT a hacker/terminal theme, NO neon green, NO black background, NO gradient wash decorations.
+- Colors (CSS variables on :root):
+  --ink: #1E3A38 (text), --teal: #2F7F79 (primary), --sage: #A8C8BC, --foam: #F4F8F6 (page background), --honey: #F0B866 (small accent: primary button, highlights)
+- Type: Bricolage Grotesque for headings, Figtree for body. Clear type scale, line length under 75 characters, body line-height about 1.6. Sentence case everywhere. NO all-caps labels, NO tiny eyebrow labels above headings, NO "->" arrows in buttons.
+- Do not make identical cards everywhere. Vary the layout between sections.
+- Motion: only ONE page-load moment (the hero chat bubbles appear one by one). Everything else is static except the marquee and user-triggered interactions (FAQ open/close, hover).
+
+PAGE STRUCTURE (single page)
+1. Navbar: the CalmDev logo on the left, small links on the right (Aturan, Cara gabung, FAQ) plus a "Gabung grup" button. On mobile, keep it simple (no heavy hamburger animation).
+2. Hero: left side has the headline, one short subline, and two buttons ("Gabung grup" = WhatsApp group link, "Baca aturan" = scroll to rules). Right side has a small fake chat: a beginner asks "Kok kodenya error terus ya? Aku masih baru banget." and a member replies patiently with a simple first step, then a second member encourages. This chat is the one memorable element of the page.
+3. Marquee (directly below hero): two rows of Devicon icons running in opposite directions.
+   - Row 1 (languages): devicon-html5-plain, devicon-css3-plain, devicon-javascript-plain, devicon-typescript-plain, devicon-python-plain, devicon-cplusplus-plain, devicon-java-plain, devicon-php-plain, devicon-go-plain, devicon-rust-original
+   - Row 2 (tools): devicon-github-original, devicon-vercel-original, devicon-supabase-plain, devicon-vscode-plain, devicon-git-plain, devicon-nodejs-plain, devicon-react-original, devicon-linux-plain, devicon-figma-plain, devicon-docker-plain
+   (I will verify these class names on devicon.dev. Use them exactly as written.)
+   - CSS-only animation (@keyframes + translateX). Duplicate each list so the loop is seamless; mark the duplicate with aria-hidden="true". Use padding or margin on items, not flex gap, to avoid a jump at the loop point.
+   - Every icon is wrapped in an element with title and aria-label containing the tech name; the <i> itself gets aria-hidden="true". If the icon font fails to load, the item must still look intact by showing the tech name as small text.
+   - All icons use the same font-size (about 2.5rem). Grayscale at low opacity by default; on hover they get the Devicon "colored" look (add the "colored" class on hover via JS or override color in CSS). The row pauses on hover.
+   - Different speeds per row (about 40s and 55s).
+   - With prefers-reduced-motion: no animation, icons wrap and show statically.
+   - Add a subtle edge fade (mask-image) on left and right.
+   - Build the rows from data/content.json via JS fetch, with a small inline fallback list in case fetch fails (e.g. opening via file://).
+4. Kenapa CalmDev: 3 principles - "Nggak ada pertanyaan bodoh", "Dijawab pelan-pelan", "Belajar bareng-bareng".
+5. Aturan grup: render from content.json. Easy to scan.
+6. Tujuan grup: the 3 goals.
+7. Cara gabung: 3 real steps (this IS a sequence, so numbering is fine): klik tombol gabung, baca aturan, perkenalan singkat dan langsung tanya.
+8. FAQ pemula: accessible accordion using <details>/<summary> or buttons with aria-expanded. Questions come from content.json.
+9. Kontak owner: name "Alprisz", a "Chat owner" button (WhatsApp URL below), and a "Gabung grup" button.
+10. Footer: the logo, "Logo teknologi adalah milik masing-masing pemiliknya.", and a small copyright.
+
+CONTENT (put this in data/content.json, write final copy in Indonesian)
+- Tagline: calm, welcoming, specific. Write your own, no clichés like "unleash" or "revolutionize".
+- Rules (rewritten politely):
+  1. Dilarang rasis dan diskriminasi.
+  2. Dilarang konten sensitif (pornografi, pedofilia, dan sejenisnya).
+  3. Promosi maksimal 1x sehari.
+  4. Jangan menambahkan bot ke grup tanpa izin admin.
+  5. Jangan cuekin orang yang lagi butuh bantuan.
+  6. Utamakan sopan santun.
+- Goals: berbagi ilmu dan pengalaman; support dan problem solving; networking dan relasi.
+- Note: "Buat yang baru terjun ke dunia pemrograman, sering-sering bertanya aja, nanti bakal dijawab. Jangan takut bertanya ya!"
+- FAQ (write 5 short answers): boleh gabung kalau belum bisa ngoding? mulai belajar dari mana? boleh nanya hal yang kelihatan sepele? apakah gratis? bagaimana kalau ada member yang melanggar aturan?
+- Links: GROUP_URL = https://chat.whatsapp.com/GFcA2pjI6Z36rP8z6fkXHS ; OWNER_WA_URL = https://wa.me/6283139436452
+
+FILE STRUCTURE (output each file in its own code block, path as a heading, in this order)
+index.html
+css/style.css
+js/main.js
+data/content.json
+README.md   (in Indonesian: how to run locally, how to edit rules/FAQ, how to add or remove a marquee icon, how to replace the logo)
+
+Expected repo layout (the logo folder already exists, do NOT output the logo file):
+calmdev/
+├── index.html
+├── css/style.css
+├── js/main.js
+├── data/content.json
+├── assets/logo/calmdev-logo.{{LOGO_EXT}}   (already made by me)
+└── README.md
+
+AFTER THE FILES (in Indonesian)
+1. "Cara deploy ke GitHub dan Vercel": numbered beginner steps, including exact git commands (git init, add, commit, branch -M main, remote add origin, push) and Vercel import steps (Framework Preset: Other, no build command, empty output directory).
+2. "Cara test lokal": python3 -m http.server and open localhost:8000. Explain that fetch() will not work when double-clicking index.html.
+3. "Checklist yang harus kamu isi": every {{PLACEHOLDER}} used.
+4. "Cek akhir": a short checklist confirming each HARD RULE was followed.
+
+/////////
+           
+           
+           
+           <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+          
+          
+            <i class="devicon-html5-plain"></i>
+          
+            <i class="devicon-python-plain"></i>
+          
+            <i class="devicon-java-plain"></i>
+          
+            <i class="devicon-javascript-plain"></i>
+          
+            <i class="devicon-github-original"></i>
+          
+            <i class="devicon-supabase-plain"></i>
+          
+            <i class="devicon-amazonwebservices-plain"></i>
+          
+            <i class="devicon-cloudflare-plain"></i>
+          
+           
+            <i class="devicon-cplusplus-plain"></i>
+          
+          
+            <i class="devicon-linux-plain"></i>
+          
+            <i class="devicon-windows11-original"></i>
+          
+            <i class="devicon-mongodb-plain"></i>
+          
+            <i class="devicon-go-plain"></i>
+          
+            <i class="devicon-php-plain"></i>
+          
+            <i class="devicon-rust-original"></i>
+          
+            <i class="devicon-nodejs-plain-wordmark"></i>
+          
+          
+            <i class="devicon-figma-plain"></i>
+          

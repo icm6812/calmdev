@@ -1,0 +1,78 @@
+{
+  "tagline": "Belajar coding dengan tenang, bertanya dengan nyaman, dan terus berkembang.",
+  "note": "Buat yang baru terjun ke dunia pemrograman, sering-sering bertanya aja, nanti bakal dijawab. Jangan takut bertanya ya!",
+  "links": {
+    "group": "https://chat.whatsapp.com/GFcA2pjI6Z36rP8z6fkXHS",
+    "ownerWa": "https://wa.me/6283139436452"
+  },
+  "rules": [
+    "Dilarang rasis dan diskriminasi.",
+    "Dilarang konten sensitif (pornografi, pedofilia, dan sejenisnya).",
+    "Promosi maksimal 1x sehari.",
+    "Jangan menambahkan bot ke grup tanpa izin admin.",
+    "Jangan cuekin orang yang lagi butuh bantuan.",
+    "Utamakan sopan santun."
+  ],
+  "goals": [
+    {
+      "title": "Berbagi ilmu dan pengalaman",
+      "description": "Kita saling belajar dari proses, bukan cuma hasil akhirnya."
+    },
+    {
+      "title": "Support dan problem solving",
+      "description": "Semua bisa minta bantuan saat stuck tanpa merasa canggung."
+    },
+    {
+      "title": "Networking dan relasi",
+      "description": "Belajar bersama bisa membuka koneksi dan peluang baru ke depan."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Boleh gabung kalau belum bisa ngoding?",
+      "answer": "Boleh banget. CalmDev memang dibuat untuk pemula yang ingin belajar dari nol tanpa malu."
+    },
+    {
+      "question": "Mulai belajar dari mana?",
+      "answer": "Mulai dari dasar: HTML, CSS, JavaScript, lalu lanjut ke alat yang kamu butuhkan untuk belajar lebih lanjut."
+    },
+    {
+      "question": "Boleh nanya hal yang kelihatan sepele?",
+      "answer": "Boleh banget. Pertanyaan kecil sering jadi titik awal belajar yang paling penting."
+    },
+    {
+      "question": "Apakah gratis?",
+      "answer": "Iya, komunitas ini gratis dan fokus untuk membantu anggota belajar dengan tenang."
+    },
+    {
+      "question": "Bagaimana kalau ada member yang melanggar aturan?",
+      "answer": "Admin akan menegur dan mengambil tindakan yang sesuai agar semua anggota tetap nyaman."
+    }
+  ],
+  "marquee": {
+    "languages": [
+      { "name": "HTML5", "icon": "devicon-html5-plain" },
+      { "name": "CSS3", "icon": "devicon-css3-plain" },
+      { "name": "JavaScript", "icon": "devicon-javascript-plain" },
+      { "name": "TypeScript", "icon": "devicon-typescript-plain" },
+      { "name": "Python", "icon": "devicon-python-plain" },
+      { "name": "C++", "icon": "devicon-cplusplus-plain" },
+      { "name": "Java", "icon": "devicon-java-plain" },
+      { "name": "PHP", "icon": "devicon-php-plain" },
+      { "name": "Go", "icon": "devicon-go-plain" },
+      { "name": "Rust", "icon": "devicon-rust-original" }
+    ],
+    "tools": [
+      { "name": "GitHub", "icon": "devicon-github-original" },
+      { "name": "Vercel", "icon": "devicon-vercel-original" },
+      { "name": "Supabase", "icon": "devicon-supabase-plain" },
+      { "name": "VS Code", "icon": "devicon-vscode-plain" },
+      { "name": "Git", "icon": "devicon-git-plain" },
+      { "name": "Node.js", "icon": "devicon-nodejs-plain" },
+      { "name": "React", "icon": "devicon-react-original" },
+      { "name": "Linux", "icon": "devicon-linux-plain" },
+      { "name": "Figma", "icon": "devicon-figma-plain" },
+      { "name": "Docker", "icon": "devicon-docker-plain" }
+    ]
+  }
+}
